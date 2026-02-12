@@ -1,4 +1,4 @@
-       * {
+* {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -100,9 +100,8 @@
             align-items: center;
         }
 
-        /* ================================================================
+        /* 
            MEDIA QUERY (Mobile <= 768px)
-           ================================================================
         */
         @media (max-width: 768px) {
             
@@ -142,4 +141,4 @@
                 flex-direction: column; /* Menú vertical */
                 gap: 10px;
             }
-        }
+}
