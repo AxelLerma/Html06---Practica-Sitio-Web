@@ -1,0 +1,145 @@
+       * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* HEADER: Centrado con Flexbox */
+        header {
+            background-color: #f7df1e; /* Amarillo JS */
+            color: #000;
+            padding: 20px;
+            display: flex;
+            justify-content: center; /* Centrado horizontal */
+            align-items: center;     /* Centrado vertical */
+            text-align: center;
+            border-bottom: 3px solid #333;
+        }
+
+        /* NAV: Horizontal y distribuido */
+        nav {
+            background-color: #333;
+            display: flex;
+            justify-content: center; /* Centrar enlaces */
+            gap: 20px; /* Espacio entre enlaces */
+            padding: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f7df1e;
+        }
+
+        /* MAIN: Contenedor principal de las 3 columnas */
+        main {
+            display: flex; /* Activa Flexbox para las columnas */
+            flex-direction: row; /* Eje horizontal por defecto (Desktop) */
+            gap: 20px; /* Espacio entre columnas */
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto; /* Centrar el contenedor en pantalla grande */
+            width: 100%;
+            flex: 1; /* Empuja el footer hacia abajo si hay poco contenido */
+        }
+
+        /* ASIDE IZQUIERDO Y DERECHO (Columnas laterales) */
+        aside {
+            flex: 1; /* Ocupan 1 parte del espacio disponible */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* ARTICLE (Columna central - Más ancha) */
+        article {
+            flex: 3; /* Ocupa 3 veces más espacio que los asides */
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Estilos internos de las secciones */
+        h2 { margin-bottom: 20px; color: #323330; }
+        h3 { margin-bottom: 10px; color: #444; border-bottom: 2px solid #f7df1e; display: inline-block;}
+        section { margin-bottom: 25px; }
+        p { margin-bottom: 10px; }
+
+        /* Estilos específicos para distinguir visualmente los asides */
+        .left { border-left: 5px solid #323330; }
+        .right { border-right: 5px solid #323330; }
+
+        /* FOOTER */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ================================================================
+           MEDIA QUERY (Mobile <= 768px)
+           ================================================================
+        */
+        @media (max-width: 768px) {
+            
+            /* 1. Cambiamos la dirección a columna (vertical) */
+            main {
+                flex-direction: column;
+            }
+
+            /* 2. REORDENAMIENTO OBLIGATORIO (Propiedad 'order') 
+               El PDF pide este orden exacto dentro del main:
+               1° Contenido principal (article)
+               2° Aside izquierdo (aside.left)
+               3° Aside derecho (aside.right)
+            */
+            
+            article {
+                order: 1; /* Lo forzamos a ser el primero */
+                width: 100%;
+            }
+
+            aside.left {
+                order: 2; /* Lo forzamos a ser el segundo */
+                width: 100%;
+                border-left: none; /* Quitamos borde lateral estético */
+                border-top: 5px solid #323330; /* Cambiamos a borde superior */
+            }
+
+            aside.right {
+                order: 3; /* Lo forzamos a ser el tercero */
+                width: 100%;
+                border-right: none;
+                border-top: 5px solid #323330;
+            }
+
+            /* Ajustes para el menú en móvil */
+            nav {
+                flex-direction: column; /* Menú vertical */
+                gap: 10px;
+            }
+        }
